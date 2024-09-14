@@ -1,7 +1,7 @@
 # This is a simple API expoing my homelab's power draw. 
 ## I am using Linear Interpolation to extrapolate power draw for components that do not report their power consumption.
 
-    Devices using Interpolation:
+Devices using Interpolation:
 ```
 HGST 12TB Drive x2
 Seagase 12TB Drive
