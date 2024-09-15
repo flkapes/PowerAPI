@@ -2,3 +2,4 @@ django-celery-beat
 celery[redis]
 djangorestframework
 django
+pytest-django

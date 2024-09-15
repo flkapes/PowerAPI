@@ -6,7 +6,7 @@ from .models import HDDModel, CPUModel
 class HDDAPITests(APITestCase):
     def setUp(self):
         self.hdd = HDDModel.objects.create(model_number="HUH721212ALE622", disk_uuid="268b-a342-9037-33a0c848a2e4", current_io=75.0, estimated_powerdraw=6.5, last_updated="2024-09-14T12:00:00Z")
-        self.hdd_url = reverse('api/hdd')
+        self.hdd_url = reverse('hdd-list')
 
     def test_get_hdd_list(self):
         """Test to retrieve the list of all HDDs."""
@@ -25,5 +25,5 @@ class HDDAPITests(APITestCase):
         }
         response = self.client.post(self.hdd_url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(HDDModel.objects.count(), 5)  # One created in setUp and one here
-        self.assertEqual(HDDModel.objects.get(id=response.data['id']).model_number, "HUH721212ALE421")
+        self.assertEqual(HDDModel.objects.count(), 2)  # One created in setUp and one here
+        self.assertEqual(HDDModel.objects.get(disk_uuid=response.data['disk_uuid']).model_number, "HUH721212ALE421")
