@@ -21,9 +21,9 @@ from rest_framework.routers import DefaultRouter
 from .powerapi.views import HDDModelViewSet, GPUModelViewSet, CPUModelViewSet
 
 router = DefaultRouter()
-router.register(r"hdd", HDDModelViewSet)
-router.register(r"cpu", CPUModelViewSet)
-router.register(r"gpu", GPUModelViewSet)
+router.register(r'hdd', HDDModelViewSet, basename='hdd')
+router.register(r'cpu', CPUModelViewSet, basename='cpu')
+router.register(r'gpu', GPUModelViewSet, basename='gpu')
 
 urlpatterns = [
     path("api/", include(router.urls)),
