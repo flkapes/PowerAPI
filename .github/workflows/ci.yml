@@ -12,6 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    environment: Test
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -41,3 +43,5 @@ jobs:
 
       - name: Run tests with pytest
         run: python manage.py test powerapi
+        env:
+          SECRET_KEY: ${{ secrets.TEST_DATABASE_URL }}
