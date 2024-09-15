@@ -9,3 +9,8 @@ NVIDIA Quadro P400 PNY
 ```
 
 ### I am using PSU efficiency data to normalize my readings to different load levels, using results of riggorous testing of the same power supply by GamersNexus.
+
+
+### Django Setup
+Make sure to edit the initial_data.json file with your hardware specifications.
+Once you've done that, perform the makemigrations and then migrate commands.

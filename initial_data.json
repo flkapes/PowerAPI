@@ -1,0 +1,55 @@
+[
+    {
+        "model": "powerapi.hddmodel",
+        "pk": 1,
+        "fields" : {
+            "model_number":"HUH721212ALE601",
+            "disk_uuid":"7C53C124-3C36-A544-BA34-6528D93D67D9",
+            "current_io":0.0,
+            "estimated_powerdraw":0,
+            "last_updated": "2024-09-14T12:00:00Z"
+        }
+    },
+    {
+        "model": "powerapi.hddmodel",
+        "pk": 2,
+        "fields" : {
+            "model_number":"HUH721212ALE601",
+            "disk_uuid":"22F264CB-07DC-9444-B83E-97254BFB52A4",
+            "current_io":0.0,
+            "estimated_powerdraw":0,
+            "last_updated": "2024-09-14T12:00:00Z"
+        }
+    },
+    {
+        "model": "powerapi.hddmodel",
+        "pk": 3,
+        "fields" : {
+            "model_number":"WD HGSTHUH721212AL",
+            "disk_uuid":"B7C47E73-4324-3F44-A492-03948A4763F5",
+            "current_io":0.0,
+            "estimated_powerdraw":0,
+            "last_updated": "2024-09-14T12:00:00Z"
+        }
+    },
+    {
+        "model": "powerapi.gpumodel",
+        "pk": 1,
+        "fields" : {
+            "gpu_id": "Quadro P400",
+            "current_load":0.0,
+            "estimated_powerdraw":0,
+            "last_updated": "2024-09-14T12:00:00Z"
+        }
+    },
+    {
+        "model": "powerapi.cpumodel",
+        "pk": 1,
+        "fields" : {
+            "cpu_id":"Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",
+            "current_load":0.0,
+            "estimated_powerdraw":0,
+            "last_updated": "2024-09-14T12:00:00Z"
+        }
+    }
+]
