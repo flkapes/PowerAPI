@@ -44,4 +44,4 @@ jobs:
       - name: Run tests with pytest
         run: python manage.py test powerapi
         env:
-          SECRET_KEY: ${{ secrets.TEST_DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
