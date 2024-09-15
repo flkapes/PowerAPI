@@ -3,3 +3,4 @@ celery[redis]
 djangorestframework
 django
 pytest-django
+python-dotenv
