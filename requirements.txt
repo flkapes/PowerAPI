@@ -2,5 +2,6 @@ django-celery-beat
 celery[redis]
 djangorestframework
 django
+celery
 pytest-django
 python-dotenv

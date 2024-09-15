@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class HDDModel(models.Model):
     model_number = models.CharField(max_length=100)
@@ -10,7 +11,8 @@ class HDDModel(models.Model):
 
     def __str__(self):
         return "{self.estimated_powerdraw}W"
-        
+
+
 class CPUModel(models.Model):
     cpu_id = models.CharField(max_length=100)
     current_load = models.FloatField()
@@ -19,6 +21,7 @@ class CPUModel(models.Model):
 
     def __str__(self):
         return "{self.estimated_powerdraw}W"
+
 
 class GPUModel(models.Model):
     gpu_id = models.CharField(max_length=100)
