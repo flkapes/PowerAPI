@@ -6,34 +6,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('powerapi', '0001_initial'),
+        ("powerapi", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='cpumodel',
-            old_name='current_time',
-            new_name='last_updated',
+            model_name="cpumodel",
+            old_name="current_time",
+            new_name="last_updated",
         ),
         migrations.RenameField(
-            model_name='gpumodel',
-            old_name='current_time',
-            new_name='last_updated',
+            model_name="gpumodel",
+            old_name="current_time",
+            new_name="last_updated",
         ),
         migrations.RenameField(
-            model_name='hddmodel',
-            old_name='current_time',
-            new_name='last_updated',
+            model_name="hddmodel",
+            old_name="current_time",
+            new_name="last_updated",
         ),
         migrations.AddField(
-            model_name='hddmodel',
-            name='disk_uuid',
-            field=models.CharField(default='meow', max_length=100),
+            model_name="hddmodel",
+            name="disk_uuid",
+            field=models.CharField(default="meow", max_length=100),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='hddmodel',
-            name='model_number',
+            model_name="hddmodel",
+            name="model_number",
             field=models.CharField(max_length=100),
         ),
     ]

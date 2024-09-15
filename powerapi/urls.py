@@ -14,16 +14,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .powerapi.views import HDDModelViewSet, GPUModelViewSet, CPUModelViewSet
 
 router = DefaultRouter()
-router.register(r'hdd', HDDModelViewSet)
-router.register(r'cpu', CPUModelViewSet)
-router.register(r'gpu', GPUModelViewSet)
+router.register(r"hdd", HDDModelViewSet)
+router.register(r"cpu", CPUModelViewSet)
+router.register(r"gpu", GPUModelViewSet)
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path("api/", include(router.urls)),
 ]

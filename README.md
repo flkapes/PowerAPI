@@ -12,5 +12,29 @@ NVIDIA Quadro P400 PNY
 
 
 ### Django Setup
-Make sure to edit the initial_data.json file with your hardware specifications.
-Once you've done that, perform the makemigrations and then migrate commands.
+Make sure to run the following commandsin order to setup the DB for the first run:
+```bash
+python manage.py makemigrations
+```
+
+```bash
+python manage.py migrate
+```
+
+Make sure to edit the initial_data.json file with your hardware specifications, and then run:
+
+```bash
+python manage.py loaddata initial_data.json
+```
+
+Finally, before running the app for the first time, make sure to rename the .env.example file to .env and update the relevant values within it.
+
+### Celery
+Celery is used to asynchronously run tasks to update HDD usage and estimated wattage. In order to run celery alongside the Django server, execute the following commands in separate terminals:
+```bash
+celery -A powerapi worker --loglevel=error
+```
+
+```bash
+celery -A powerapi beat --loglevel=error
+```

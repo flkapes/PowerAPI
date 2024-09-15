@@ -4,7 +4,7 @@
         "pk": 1,
         "fields" : {
             "model_number":"HUH721212ALE601",
-            "disk_uuid":"7C53C124-3C36-A544-BA34-6528D93D67D9",
+            "disk_uuid":"ca60b0c8-268b-a342-9037-33a0c848a2e4",
             "current_io":0.0,
             "estimated_powerdraw":0,
             "last_updated": "2024-09-14T12:00:00Z"
@@ -15,7 +15,7 @@
         "pk": 2,
         "fields" : {
             "model_number":"HUH721212ALE601",
-            "disk_uuid":"22F264CB-07DC-9444-B83E-97254BFB52A4",
+            "disk_uuid":"d74294d8-daab-c445-a38a-f122353e1f59",
             "current_io":0.0,
             "estimated_powerdraw":0,
             "last_updated": "2024-09-14T12:00:00Z"
@@ -26,7 +26,7 @@
         "pk": 3,
         "fields" : {
             "model_number":"WD HGSTHUH721212AL",
-            "disk_uuid":"B7C47E73-4324-3F44-A492-03948A4763F5",
+            "disk_uuid":"57710fcf-1a53-7b4b-8c46-508b4edab623",
             "current_io":0.0,
             "estimated_powerdraw":0,
             "last_updated": "2024-09-14T12:00:00Z"
