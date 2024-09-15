@@ -1,0 +1,44 @@
+version: v1.0
+name: Django CI Pipeline
+
+# Define the agent with Python 3.12
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2204-python312
+
+blocks:
+  - name: Checkout Code
+    task:
+      jobs:
+        - name: Checkout Repository
+          commands:
+            - checkout
+
+  - name: Setup Python Environment
+    task:
+      jobs:
+        - name: Install Dependencies
+          commands:
+            - python -m pip install --upgrade pip
+            - pip install -r requirements.txt
+
+  - name: Lint and Static Code Analysis
+    task:
+      jobs:
+        - name: Run Flake8 Strict Check
+          commands:
+            - pip install flake8
+            - flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+        - name: Run Flake8 with Complexity and Length Check
+          commands:
+            - flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  - name: Run Unit Tests
+    task:
+      jobs:
+        - name: Install pytest and Run Tests
+          commands:
+            - pip install pytest
+            - pytest
