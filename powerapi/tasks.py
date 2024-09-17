@@ -80,11 +80,10 @@ def get_cpu_power():
         
         # Find all occurrences of "Power consumed: X Watt"
         power_values = re.findall(r"Power consumed:\s*([\d.]+)\s*Watt", " ".join(cpu_lines))
-        
-        # If power values were found, sum them up
+        joules_10seconds = re.findall(r"Power consumed:\s*([\d.]+)\s*Joules", " ".join(cpu_lines))
+
         if power_values:
             total_power = sum(float(power) for power in power_values)
-            print(power_values, total_power)
             return total_power
         else:
             print("No power values found.")
