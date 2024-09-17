@@ -7,7 +7,6 @@ Devices using Interpolation:
 HGST 12TB Drive x2
 WD HGST 12TB Drive x 1
 NVIDIA Quadro P400 PNY
-Intel(R) Xeon(R) CPU E5-2630 v4 (Energy Saving Mode Enabled)
 ```
 
 ### I am using PSU efficiency data to normalize my readings to different load levels, using results of riggorous testing of the same power supply by GamersNexus.
@@ -39,4 +38,19 @@ celery -A powerapi worker --loglevel=error
 
 ```bash
 celery -A powerapi beat --loglevel=error
+```
+
+### CPU Power Draw
+
+*Please consult the following GitHub page to see compatability and updated installation instructions.* 
+
+As of writing this, the following commands can be run to install Likwid to measure CPU PKG power draw, as well as DRAM power draw.
+
+```bash
+VERSION=stable
+wget http://ftp.fau.de/pub/likwid/likwid-$VERSION.tar.gz
+tar -xaf likwid-$VERSION.tar.gzcd likwid
+cd likwid-*
+make
+sudo make install
 ```

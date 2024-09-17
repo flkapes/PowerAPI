@@ -3,6 +3,7 @@ import os
 from celery import Celery
 from django.conf import settings
 
+
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "powerapi.settings")
 
 app = Celery("powerapi")
@@ -10,14 +11,12 @@ app = Celery("powerapi")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
-from django_celery_beat.schedulers import DatabaseScheduler
 
-CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 from celery.schedules import crontab
 
 app.conf.beat_schedule = {
-    "update-drive-io-every-minute": {
+    "update-drive-io-1": {
         "task": "powerapi.tasks.update_drive_io",
         "schedule": 60.0,  # Every 60 seconds
         "args": (
@@ -34,4 +33,9 @@ app.conf.beat_schedule = {
         "schedule": 60.0,
         "args": ("d74294d8-daab-c445-a38a-f122353e1f59",),
     },
+    "update-cpu-power": {
+        "task": "powerapi.tasks.update_cpu_power",
+        "schedule": 60.0,
+        "args": ("Intel(R) Xeon(R) CPU E5-2630 v4 @ 2.20GHz",),
+    }
 }

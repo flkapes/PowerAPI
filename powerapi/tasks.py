@@ -1,8 +1,9 @@
 from celery import shared_task
 import subprocess
 import re
+import psutil
 import time
-from .powerapi.models import HDDModel
+from .powerapi.models import HDDModel, CPUModel
 from .powerapi.wattage_calc import calculate_disk_powerdraw
 from django.utils import timezone
 
@@ -67,6 +68,47 @@ def get_device_by_uuid(uuid):
         print(f"Error: {stderr.decode().strip()}")
         return None
 
+
+def get_cpu_power():
+    cpu_command = ["likwid-powermeter", "-s", "10s"]
+    process = subprocess.Popen(
+        cpu_command, shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
+    stdout, stderr = process.communicate()
+    if process.returncode == 0:
+        cpu_lines = stdout.decode().splitlines()
+        
+        # Find all occurrences of "Power consumed: X Watt"
+        power_values = re.findall(r"Power consumed:\s*([\d.]+)\s*Watt", " ".join(cpu_lines))
+        
+        # If power values were found, sum them up
+        if power_values:
+            total_power = sum(float(power) for power in power_values)
+            print(power_values, total_power)
+            return total_power
+        else:
+            print("No power values found.")
+            return None
+    else:
+        print(f"Error occurred: {stderr.decode()}")
+        return None
+
+@shared_task
+def update_cpu_power(cpu_id):
+    power_draw = get_cpu_power()
+
+    if power_draw is not None:
+        try:
+            cpu = CPUModel.objects.get(cpu_id=cpu_id)
+            cpu.estimated_powerdraw = power_draw
+            cpu.current_load = psutil.cpu_percent()
+            cpu.last_updated = timezone.now()
+            cpu.save()
+            return f"Updated CPU {cpu_id} with power draw: {power_draw}."
+        except CPUModel.DoesNotExist:
+            return f"CPU ID: {cpu_id} does not exist in the database."
+    else:
+        return f"Failed to retrieve CPU Power Data for CPU {cpu_id}."
 
 @shared_task
 def update_drive_io(drive_uuid):
