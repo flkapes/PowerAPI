@@ -1,4 +1,4 @@
-# This is a simple API expoing my homelab's power draw. 
+# This is a simple API exposing my homelab / nas power draw as an API for HomeAssistant. 
 
 ### I am using Linear Interpolation to extrapolate power draw for components that do not report their power consumption.
 
@@ -7,7 +7,6 @@ Devices using Interpolation:
 HGST 12TB Drive x2
 WD HGST 12TB Drive x 1
 NVIDIA Quadro P400 PNY
-Intel(R) Xeon(R) CPU E5-2630 v4 (Energy Saving Mode Enabled)
 ```
 
 ### I am using PSU efficiency data to normalize my readings to different load levels, using results of riggorous testing of the same power supply by GamersNexus.
