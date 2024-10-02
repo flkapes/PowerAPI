@@ -39,3 +39,19 @@ celery -A powerapi worker --loglevel=error
 ```bash
 celery -A powerapi beat --loglevel=error
 ```
+
+### CPU Power Draw
+
+*Please consult the following GitHub page to see compatability and updated installation instructions.* 
+
+As of writing this, the following commands can be run to install Likwid to measure CPU PKG power draw, as well as DRAM power draw.
+
+```bash
+VERSION=stable
+wget http://ftp.fau.de/pub/likwid/likwid-$VERSION.tar.gz
+tar -xaf likwid-$VERSION.tar.gzcd likwid
+cd likwid-*
+make
+sudo make install
+```
+
