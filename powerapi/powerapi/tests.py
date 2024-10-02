@@ -53,3 +53,27 @@ class CPUAPITests(APITestCase):
         self.assertEqual(CPUModel.objects.count(), 2)
         self.assertEqual(CPUModel.objects.get(cpu_id="Intel Xeon E5 - 2630 v4 @ 2.20GHz").estimated_powerdraw, 45.0)
 
+
+class GPUAPITests(APITestCase):
+    def setUp(self):
+        self.gpu = GPUModel.objects.create(gpu_id="NVIDIA GeForce RTX 3090", estimated_powerdraw=350.0, current_load=95.0, last_updated="2024-09-16T12:00:00Z")
+        self.gpu_url = reverse("gpu-list")
+
+    def test_get_gpu_list(self):
+        """Test to retrieve the list of all GPUs."""
+        response = self.client.get(self.gpu_url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertTrue(len(response.data) > 0)
+
+    def test_create_gpu(self):
+        """Test to create a new GPU."""
+        data = {
+            "gpu_id": "NVIDIA GeForce RTX 3080",
+            "current_load": 90.0,
+            "estimated_powerdraw": 320.0,
+            "last_updated": "2024-09-16T12:00:00Z"
+        }
+        response = self.client.post(self.gpu_url, data, format="json")
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(GPUModel.objects.count(), 2)
+        self.assertEqual(GPUModel.objects.get(gpu_id="NVIDIA GeForce RTX 3080").current_load, 90.0)
