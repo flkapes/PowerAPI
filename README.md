@@ -1,4 +1,4 @@
-# This is a simple API expoing my homelab's power draw. 
+# This is a simple API exposing my homelab / nas power draw as an API for HomeAssistant. 
 
 ### I am using Linear Interpolation to extrapolate power draw for components that do not report their power consumption.
 
@@ -54,3 +54,4 @@ cd likwid-*
 make
 sudo make install
 ```
+
